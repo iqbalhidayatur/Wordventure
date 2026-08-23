@@ -1,172 +1,113 @@
 /* ============================================================
-   Wordventure Icon System
-   Clean + Minimal + Fun
-   ============================================================ */
-
+ Wordventure Icon System
+ Clean + Minimal + Fun
+ ============================================================ */
 :root {
     --wv-icon-bg: color-mix(in srgb, var(--primary) 10%, transparent);
     --wv-icon-bg-hover: color-mix(in srgb, var(--primary) 16%, transparent);
 }
-
 /* Global icon baseline */
-i[class^="bi-"],
-i[class*=" bi-"] {
+i[class^="bi-"], i[class*=" bi-"] {
     font-size: 1em;
     line-height: 1;
     vertical-align: -0.08em;
     -webkit-font-smoothing: antialiased;
     text-rendering: geometricPrecision;
 }
-
 /* Sidebar icons */
 .learning-nav-link .nav-icon {
     width: 34px;
     height: 34px;
     flex: 0 0 34px;
-
     display: grid;
     place-items: center;
-
     color: var(--text-secondary);
     background: transparent;
     border-radius: 10px;
-
-    transition:
-        color var(--t-fast),
-        background var(--t-fast),
-        transform var(--t-fast);
+    transition: color var(--t-fast), background var(--t-fast), transform var(--t-fast);
 }
-
 .learning-nav-link:hover .nav-icon {
     color: var(--primary);
     background: var(--wv-icon-bg);
     transform: translateY(-1px);
 }
-
 .learning-nav-link.active .nav-icon {
     color: var(--primary);
     background: var(--wv-icon-bg);
 }
-
 /* Icon containers */
-.icon-soft,
-.course-icon,
-.feature-icon,
-.practice-icon,
-.stat-icon {
+.icon-soft, .course-icon, .feature-icon, .practice-icon, .stat-icon {
     display: grid;
     place-items: center;
-
     color: var(--primary);
     background: var(--wv-icon-bg);
     border-radius: 12px;
 }
-
 .icon-soft {
     width: 42px;
     height: 42px;
 }
-
-.course-icon,
-.feature-icon,
-.practice-icon {
+.course-icon, .feature-icon, .practice-icon {
     width: 44px;
     height: 44px;
 }
-
 /* Achievement icons */
 .badge-icon {
     width: 52px;
     height: 52px;
-
     display: grid;
     place-items: center;
-
     color: var(--primary);
     background: var(--wv-icon-bg);
     border-radius: 14px;
-
     font-size: 1.15rem;
 }
-
 .badge-card.unlocked .badge-icon {
     color: var(--text-inverse);
     background: var(--grad-primary);
 }
-
 /* Hero icons */
-.hero-icon,
-.hero-trophy {
+.hero-icon, .hero-trophy {
     display: grid;
     place-items: center;
-
     color: var(--primary);
     background: var(--wv-icon-bg);
     border-radius: 16px;
 }
-
 /* Buttons */
-button i[class^="bi-"],
-button i[class*=" bi-"],
-a i[class^="bi-"],
-a i[class*=" bi-"] {
+button i[class^="bi-"], button i[class*=" bi-"], a i[class^="bi-"], a i[class*=" bi-"] {
     transition: transform var(--t-fast);
 }
-
-button:hover i.bi-arrow-right,
-a:hover i.bi-arrow-right,
-button:hover i.bi-chevron-right,
-a:hover i.bi-chevron-right {
+button:hover i.bi-arrow-right, a:hover i.bi-arrow-right, button:hover i.bi-chevron-right, a:hover i.bi-chevron-right {
     transform: translateX(2px);
 }
-
 /* Utility icon buttons */
-.icon-btn,
-.wv-chatbot-icon-btn {
+.icon-btn, .wv-chatbot-icon-btn {
     display: grid;
     place-items: center;
-
     border-radius: 10px;
-
-    transition:
-        color var(--t-fast),
-        background var(--t-fast),
-        transform var(--t-fast);
+    transition: color var(--t-fast), background var(--t-fast), transform var(--t-fast);
 }
-
-.icon-btn:hover,
-.wv-chatbot-icon-btn:hover {
+.icon-btn:hover, .wv-chatbot-icon-btn:hover {
     background: var(--wv-icon-bg);
     transform: translateY(-1px);
 }
-
 /* Small status icons */
-.text-success i,
-.text-warning i,
-.text-danger i,
-.text-muted i {
+.text-success i, .text-warning i, .text-danger i, .text-muted i {
     font-size: 0.9em;
 }
-
 /* Small playful interaction */
-i.bi-trophy-fill:hover,
-i.bi-award-fill:hover,
-i.bi-stars:hover,
-i.bi-lightning-charge-fill:hover {
+i.bi-trophy-fill:hover, i.bi-award-fill:hover, i.bi-stars:hover, i.bi-lightning-charge-fill:hover {
     animation: wvIconBounce 0.35s ease;
 }
-
 @keyframes wvIconBounce {
-    0%,
-    100% {
+    0%, 100% {
         transform: translateY(0) rotate(0);
     }
-
     50% {
         transform: translateY(-2px) rotate(-4deg);
     }
 }
-
 @media (max-width: 640px) {
     .learning-nav-link .nav-icon {
         width: 32px;
