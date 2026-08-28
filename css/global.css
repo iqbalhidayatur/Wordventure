@@ -23,6 +23,12 @@
     --info: var(--secondary);
     --warning: var(--accent);
     --danger: var(--accent-warm);
+    /* Semantic surface aliases used by interactive pages */
+    --surface: var(--bg-card);
+    --surface-muted: var(--bg-subtle);
+    --border-color: var(--bg-border);
+    --success-light: color-mix(in srgb, var(--success) 14%, var(--bg-card));
+    --danger-light: color-mix(in srgb, var(--danger) 12%, var(--bg-card));
     --orange: var(--accent);
     --green: var(--primary-light);
     --blue: var(--secondary);
@@ -99,6 +105,11 @@
     /* warm off-white with green tint */
     --text-secondary: #8FA594;
     --text-muted: #4E6352;
+    --surface: var(--bg-card);
+    --surface-muted: var(--bg-subtle);
+    --border-color: var(--bg-border);
+    --success-light: color-mix(in srgb, var(--success) 18%, var(--bg-card));
+    --danger-light: color-mix(in srgb, var(--danger) 16%, var(--bg-card));
     --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
     --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
     --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.5);
@@ -953,3 +964,29 @@ h4 {
 button, input, select, textarea {
     font-size: 0.936rem;
 }
+
+
+/* ─────────────────────────────────────────────
+   BOTANICAL LEAF DECORATIONS
+   Per-section, viewport-positioned decorations.
+   Never changes document layout.
+   ───────────────────────────────────────────── */
+.leaf-decoration-layer { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: hidden; z-index: 20; }
+.leaf-decoration-layer .leaf {
+    --leaf-size: 30px; --leaf-rotation: 0deg; --leaf-opacity: .16; --leaf-drift-x: 0px; --leaf-drift-y: -8px; --leaf-sway: 8deg; --leaf-scale: 1;
+    position: fixed; left: 0; top: 0; display: block; width: var(--leaf-size); height: calc(var(--leaf-size) * .58);
+    border-radius: 100% 0 100% 0; background: color-mix(in srgb, var(--primary) 72%, transparent); opacity: var(--leaf-opacity);
+    z-index: var(--leaf-z, 20); transform: translate3d(var(--leaf-x,0px),var(--leaf-y,0px),0) rotate(var(--leaf-rotation)) scale(var(--leaf-scale));
+    transform-origin: 50% 50%; box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--primary-light) 35%, transparent); will-change: transform;
+}
+.leaf-decoration-layer .leaf::before { content:""; position:absolute; left:12%; top:48%; width:76%; height:1px; background:color-mix(in srgb,var(--primary-dark) 55%,transparent); transform:rotate(-7deg); }
+.leaf-decoration-layer .leaf::after { content:""; position:absolute; left:47%; top:21%; width:1px; height:58%; background:color-mix(in srgb,var(--primary-dark) 38%,transparent); transform:rotate(35deg); }
+.leaf-decoration-layer .leaf:nth-child(3n){background:color-mix(in srgb,var(--secondary) 68%,transparent)}
+.leaf-decoration-layer .leaf:nth-child(4n){background:color-mix(in srgb,var(--primary-light) 78%,transparent)}
+.leaf-decoration-layer .leaf:nth-child(5n){background:color-mix(in srgb,var(--accent) 48%,var(--primary) 52%)}
+.leaf-decoration-layer .leaf:nth-child(2n){border-radius:0 100% 0 100%}
+.leaf-decoration-layer .leaf.is-floating{animation:leafDrift var(--leaf-duration,9s) ease-in-out infinite;animation-delay:var(--leaf-delay,0s)}
+@keyframes leafDrift{0%,100%{transform:translate3d(var(--leaf-x,0px),var(--leaf-y,0px),0) rotate(var(--leaf-rotation)) scale(var(--leaf-scale))}35%{transform:translate3d(calc(var(--leaf-x,0px) + var(--leaf-drift-x)*-.45),calc(var(--leaf-y,0px) + var(--leaf-drift-y)),0) rotate(calc(var(--leaf-rotation) + var(--leaf-sway))) scale(var(--leaf-scale))}70%{transform:translate3d(calc(var(--leaf-x,0px) + var(--leaf-drift-x)),calc(var(--leaf-y,0px) + var(--leaf-drift-y)*-.35),0) rotate(calc(var(--leaf-rotation) - var(--leaf-sway))) scale(var(--leaf-scale))}}
+[data-theme="dark"] .leaf-decoration-layer .leaf{--leaf-opacity:.13;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--primary-light) 22%,transparent)}
+@media(max-width:767.98px){.leaf-decoration-layer .leaf{--leaf-size:25px}}
+@media(prefers-reduced-motion:reduce){.leaf-decoration-layer .leaf.is-floating{animation:none}}

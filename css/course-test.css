@@ -56,7 +56,7 @@
     padding: clamp(20px, 4vw, 34px);
     border: 1px solid var(--border-color, color-mix(in srgb, var(--primary) 14%, transparent));
     border-radius: 24px;
-    background: var(--surface, rgba(255, 255, 255, .72));
+    background: var(--surface);
     box-shadow: 0 20px 60px rgba(0, 0, 0, .06);
 }
 .test-progress-row {
@@ -169,8 +169,8 @@
     color: inherit;
 }
 .primary-btn {
-    background: currentColor;
-    color: var(--surface, var(--text-inverse));
+    background: var(--primary);
+    color: var(--text-inverse);
 }
 .primary-btn:disabled, .secondary-btn:disabled {
     opacity: .4;
@@ -263,4 +263,27 @@
     color: var(--text-muted);
     font-size: .68rem;
     font-weight: 700;
+}
+
+/* Completed-test state: keep result actions consistent with the Wordventure palette. */
+.test-result-icon { color: var(--accent); }
+.test-result-score { color: var(--primary); }
+.test-result-actions .primary-btn {
+    background: var(--grad-primary);
+    color: var(--text-inverse);
+    box-shadow: var(--shadow-sm);
+}
+.test-result-actions .primary-btn:hover {
+    background: var(--primary-dark);
+    color: var(--text-inverse);
+}
+.test-result-actions .secondary-btn {
+    background: var(--bg-subtle);
+    color: var(--text-secondary);
+    border: 1px solid var(--bg-border);
+}
+.test-result-actions .secondary-btn:hover {
+    background: var(--bg-card);
+    color: var(--text-primary);
+    border-color: var(--primary);
 }

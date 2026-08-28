@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Certificates | Wordventure</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<link rel="stylesheet" href="css/global.css"><link rel="stylesheet" href="css/icons.css"><link rel="stylesheet" href="css/learning.css"><link rel="stylesheet" href="css/feature-pages.css"><link rel="stylesheet" href="css/certificate.css"><link rel="stylesheet" href="css/chatbot.css">
+</head>
+<body class="learning-page page-transition">
+<div class="learning-shell">
+<aside class="learning-sidebar">
+<div class="sidebar-top"><a class="navbar-brand learning-brand" href="index.html"><span class="brand-dot"></span><span>Wordventure</span></a></div>
+<div class="sidebar-user"><div class="avatar avatar-gradient" id="sidebarAvatar">AM</div><div class="sidebar-user-copy"><strong id="sidebarUserName">Alex Morgan</strong><span id="sidebarUserLevel">Communicator · Level 4</span></div></div>
+<nav class="learning-nav">
+<div class="nav-label">Workspace</div>
+<a href="learning.html" class="learning-nav-link"><span class="nav-icon"><i class="bi bi-grid-1x2-fill"></i></span><span>Dashboard</span></a>
+<a href="courses.html" class="learning-nav-link"><span class="nav-icon"><i class="bi bi-journal-bookmark-fill"></i></span><span>Courses</span></a>
+<a href="practice.html" class="learning-nav-link"><span class="nav-icon"><i class="bi bi-lightning-charge-fill"></i></span><span>Practice</span></a>
+<a href="weekly-exam.html" class="learning-nav-link"><span class="nav-icon"><i class="bi bi-clipboard2-check-fill"></i></span><span>Weekly Exam</span></a>
+<a href="vocabulary.html" class="learning-nav-link"><span class="nav-icon"><i class="bi bi-bookmark-heart-fill"></i></span><span>Vocabulary</span></a>
+<a href="achievements.html" class="learning-nav-link"><span class="nav-icon"><i class="bi bi-award-fill"></i></span><span>Achievements</span></a>
+<a href="certificate.html" class="learning-nav-link active"><span class="nav-icon"><i class="bi bi-patch-check-fill"></i></span><span>Certificates</span></a>
+<a href="analytics.html" class="learning-nav-link"><span class="nav-icon"><i class="bi bi-bar-chart-fill"></i></span><span>Analytics</span></a>
+<a href="community.html" class="learning-nav-link"><span class="nav-icon"><i class="bi bi-people-fill"></i></span><span>Community</span></a>
+</nav>
+</aside>
+<main class="feature-main certificate-main">
+<header class="feature-topbar"><div><span class="eyebrow">Proof of progress</span><h1>Certificates</h1><p>Earn a certificate when you complete a course and pass its final test.</p></div><div class="feature-stat"><strong id="certificateCount">0</strong><span>certificates earned</span></div></header>
+<section class="certificate-intro"><div><span class="eyebrow">Your certificates</span><h2>Turn your progress into something you can share.</h2><p>Complete every lesson, pass the final assessment with at least 70%, then your certificate becomes available here.</p></div><div class="certificate-intro-icon"><i class="bi bi-patch-check-fill"></i></div></section>
+<section class="certificate-layout">
+<div class="certificate-list-panel"><div class="section-heading"><div><span class="eyebrow">Course completion</span><h2>Available certificates</h2></div></div><div class="certificate-course-list" id="certificateCourseList"></div></div>
+<div class="certificate-preview-panel" id="certificatePreviewPanel"><div class="empty-certificate"><i class="bi bi-award"></i><h3>Preview your certificate</h3><p>Select a course to preview its certificate design.</p></div></div>
+</section>
+</main></div>
+
+<div class="certificate-modal" id="certificateModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="certificateModalTitle">
+    <div class="certificate-modal-backdrop" data-close-certificate></div>
+    <div class="certificate-modal-dialog">
+        <div class="certificate-modal-head">
+            <div>
+                <span class="eyebrow">Certificate preview</span>
+                <h2 id="certificateModalTitle">Certificate</h2>
+            </div>
+            <button type="button" class="certificate-modal-close" id="closeCertificateModal" aria-label="Close certificate preview">
+                <i class="bi bi-x-lg"></i>
+            </button>
+        </div>
+        <div class="certificate-modal-body" id="certificateModalBody"></div>
+    </div>
+</div>
+<script src="js/main.js"></script><script src="js/certificate.js"></script><script src="js/chatbot.js"></script>
+</body></html>

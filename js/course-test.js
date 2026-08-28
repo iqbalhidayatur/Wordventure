@@ -138,7 +138,7 @@
           <p>${passed ? 'You passed the writing assessment.' : 'You need 70% to pass. Review the writing lessons and try again.'}</p>
           <div class="test-result-score">${percent}% · ${writingState.score} / ${maxScore}</div>
           <div class="test-result-actions">
-            ${passed ? '<button class="primary-btn" id="coursesBtn" type="button">Back to courses</button>' : '<button class="primary-btn" id="retryBtn" type="button">Retry test</button>'}
+            ${passed ? '<button class="primary-btn" id="certificateBtn" type="button">View certificate <i class="bi bi-patch-check-fill"></i></button><button class="secondary-btn" id="coursesBtn" type="button">Back to courses</button>' : '<button class="primary-btn" id="retryBtn" type="button">Retry test</button>'}
           </div>
         </div>
       `;
@@ -147,7 +147,8 @@
       $('nextBtn').style.display = 'none';
       $('testIntro').textContent = passed ? 'Nice work. Your writing course is complete.' : 'Review the writing lessons and try again.';
 
-      document.getElementById('coursesBtn')?.addEventListener('click', () => window.location.href = 'courses.html');
+      document.getElementById('certificateBtn')?.addEventListener('click', () => window.location.href = `certificate.html?course=${encodeURIComponent(course)}`);
+    document.getElementById('coursesBtn')?.addEventListener('click', () => window.location.href = 'courses.html');
       document.getElementById('retryBtn')?.addEventListener('click', () => window.location.reload());
     }
 
@@ -306,7 +307,7 @@
         <div class="test-result-score">${state.score} / ${questions.length} · ${percent}%</div>
         <div class="test-result-actions">
           ${passed
-            ? '<button class="primary-btn" id="coursesBtn" type="button">Back to courses</button>'
+            ? '<button class="primary-btn" id="certificateBtn" type="button">View certificate <i class="bi bi-patch-check-fill"></i></button><button class="secondary-btn" id="coursesBtn" type="button">Back to courses</button>'
             : '<button class="primary-btn" id="retryBtn" type="button">Retry test</button>'}
         </div>
       </div>
