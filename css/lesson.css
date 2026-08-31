@@ -1033,3 +1033,14 @@
     border-color: var(--primary);
     background: var(--grad-card);
 }
+
+
+.lesson-brand .wv-wordmark {
+    width: 150px;
+}
+
+@media (max-width: 991px) {
+    .lesson-brand .wv-wordmark {
+        width: 136px;
+    }
+}

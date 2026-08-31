@@ -751,3 +751,9 @@ body.certificate-modal-open {
         box-shadow: none !important;
     }
 }
+
+
+.certificate-brand .wv-wordmark {
+    width: min(18cqw, 180px);
+    height: auto;
+}

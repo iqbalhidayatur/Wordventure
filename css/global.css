@@ -990,3 +990,42 @@ button, input, select, textarea {
 [data-theme="dark"] .leaf-decoration-layer .leaf{--leaf-opacity:.13;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--primary-light) 22%,transparent)}
 @media(max-width:767.98px){.leaf-decoration-layer .leaf{--leaf-size:25px}}
 @media(prefers-reduced-motion:reduce){.leaf-decoration-layer .leaf.is-floating{animation:none}}
+
+
+/* ─────────────────────────────────────────────
+   WORDVENTURE IMAGE LOGOS
+   ───────────────────────────────────────────── */
+.wv-wordmark {
+    display: block;
+    width: 154px;
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.navbar-brand .wv-wordmark {
+    width: 154px;
+}
+
+.learning-brand .wv-wordmark {
+    width: 145px;
+}
+
+.footer-brand .wv-wordmark {
+    width: 145px;
+}
+
+@media (max-width: 575px) {
+    .navbar-brand .wv-wordmark {
+        width: 136px;
+    }
+
+    .learning-brand .wv-wordmark {
+        width: 132px;
+    }
+
+    .footer-brand .wv-wordmark {
+        width: 132px;
+    }
+}

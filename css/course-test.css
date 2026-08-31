@@ -287,3 +287,14 @@
     color: var(--text-primary);
     border-color: var(--primary);
 }
+
+
+.test-brand .wv-wordmark {
+    width: 150px;
+}
+
+@media (max-width: 575px) {
+    .test-brand .wv-wordmark {
+        width: 132px;
+    }
+}

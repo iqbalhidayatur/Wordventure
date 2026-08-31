@@ -879,3 +879,18 @@
 .social-auth-button, .step-nav, .auth-button {
     font-size: 0.936rem;
 }
+
+
+.auth-panel-left .brand-link .wv-wordmark {
+    width: 180px;
+}
+
+.auth-mobile-logo .wv-wordmark {
+    width: 150px;
+}
+
+@media (max-width: 575px) {
+    .auth-mobile-logo .wv-wordmark {
+        width: 136px;
+    }
+}

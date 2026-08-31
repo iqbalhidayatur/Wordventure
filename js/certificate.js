@@ -106,7 +106,7 @@
                 <div class="certificate-leaf leaf-two"><i class="bi bi-leaf-fill"></i><i class="bi bi-leaf-fill"></i><i class="bi bi-leaf-fill"></i></div>
                 <div class="certificate-topline"><span></span><b>WORDVENTURE</b><span></span></div>
                 <div class="certificate-content">
-                    <div class="certificate-brand"><span class="brand-dot"></span><span>Wordventure</span></div>
+                    <div class="certificate-brand"><img class="wv-wordmark" src="assets/wordventure.png" alt="Wordventure"></div>
                     <div class="certificate-kicker">Certificate of Completion</div>
                     <h2 class="certificate-title">Certificate</h2>
                     <p class="certificate-presented">This certificate is proudly presented to</p>
