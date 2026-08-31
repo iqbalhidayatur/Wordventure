@@ -529,8 +529,6 @@ function initSmoothScroll() {
    ───────────────────────────────────────────── */
 function initLeafDecoration() {
   if (document.querySelector('.leaf-decoration-layer')) return;
-  const sections = Array.from(document.querySelectorAll('section'));
-  if (!sections.length) return;
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const layer = document.createElement('div');
@@ -541,57 +539,48 @@ function initLeafDecoration() {
   const random = (min, max) => Math.random() * (max - min) + min;
   const randomInt = (min, max) => Math.floor(random(min, max + 1));
   const leaves = [];
+  const count = window.innerWidth < 768 ? randomInt(5, 8) : randomInt(9, 14);
 
-  sections.forEach((section, sectionIndex) => {
-    const count = window.innerWidth < 768 ? randomInt(2, 4) : randomInt(4, 7);
-    for (let i = 0; i < count; i += 1) {
-      const leaf = document.createElement('span');
-      leaf.className = 'leaf is-floating';
-      leaf.dataset.sectionIndex = sectionIndex;
-      leaf.style.setProperty('--leaf-size', `${random(20, 40).toFixed(1)}px`);
-      leaf.style.setProperty('--leaf-rotation', `${random(-75, 75).toFixed(1)}deg`);
-      leaf.style.setProperty('--leaf-opacity', random(0.10, 0.20).toFixed(2));
-      leaf.style.setProperty('--leaf-duration', `${random(7, 14).toFixed(2)}s`);
-      leaf.style.setProperty('--leaf-delay', `${random(-12, 0).toFixed(2)}s`);
-      leaf.style.setProperty('--leaf-drift-x', `${random(-18, 18).toFixed(1)}px`);
-      leaf.style.setProperty('--leaf-drift-y', `${random(-14, 14).toFixed(1)}px`);
-      leaf.style.setProperty('--leaf-sway', `${random(-14, 14).toFixed(1)}deg`);
-      leaf.style.setProperty('--leaf-scale', random(0.78, 1.15).toFixed(2));
-      leaf.style.setProperty('--leaf-z', randomInt(15, 35));
-      if (reducedMotion.matches) leaf.classList.remove('is-floating');
-      layer.appendChild(leaf);
-      leaves.push({ element: leaf, section, xRatio: random(0.04, 0.96), yRatio: random(0.06, 0.90), edgeBias: randomInt(0, 2) });
-    }
-  });
+  for (let i = 0; i < count; i += 1) {
+    const leaf = document.createElement('span');
+    leaf.className = 'leaf is-floating';
+    leaf.style.setProperty('--leaf-size', `${random(20, 40).toFixed(1)}px`);
+    leaf.style.setProperty('--leaf-rotation', `${random(-75, 75).toFixed(1)}deg`);
+    leaf.style.setProperty('--leaf-opacity', random(0.10, 0.20).toFixed(2));
+    leaf.style.setProperty('--leaf-duration', `${random(7, 14).toFixed(2)}s`);
+    leaf.style.setProperty('--leaf-delay', `${random(-12, 0).toFixed(2)}s`);
+    leaf.style.setProperty('--leaf-drift-x', `${random(-18, 18).toFixed(1)}px`);
+    leaf.style.setProperty('--leaf-drift-y', `${random(-14, 14).toFixed(1)}px`);
+    leaf.style.setProperty('--leaf-sway', `${random(-14, 14).toFixed(1)}deg`);
+    leaf.style.setProperty('--leaf-scale', random(0.78, 1.15).toFixed(2));
+    leaf.style.setProperty('--leaf-z', randomInt(15, 35));
+    if (reducedMotion.matches) leaf.classList.remove('is-floating');
+    layer.appendChild(leaf);
+    leaves.push({
+      element: leaf,
+      xRatio: random(0.03, 0.97),
+      yRatio: random(0.04, 0.96)
+    });
+  }
 
   const updatePositions = () => {
     const width = window.innerWidth;
     const height = window.innerHeight;
+
     leaves.forEach(item => {
-      const rect = item.section.getBoundingClientRect();
       const size = parseFloat(getComputedStyle(item.element).getPropertyValue('--leaf-size')) || 30;
-      if (rect.bottom < -40 || rect.top > height + 40) { item.element.style.visibility = 'hidden'; return; }
-      item.element.style.visibility = 'visible';
-      let x = rect.left + rect.width * item.xRatio;
-      let y = rect.top + rect.height * item.yRatio;
-      if (item.edgeBias === 0) x = rect.left + random(0.02, 0.18) * Math.max(rect.width, 1);
-      if (item.edgeBias === 1) x = rect.right - random(0.02, 0.18) * Math.max(rect.width, 1);
-      x = Math.max(-size, Math.min(width - size, x - size / 2));
-      y = Math.max(-size, Math.min(height - size, y - size / 2));
+      const x = Math.max(-size, Math.min(width - size, width * item.xRatio - size / 2));
+      const y = Math.max(-size, Math.min(height - size, height * item.yRatio - size / 2));
       item.element.style.setProperty('--leaf-x', `${x.toFixed(1)}px`);
       item.element.style.setProperty('--leaf-y', `${y.toFixed(1)}px`);
     });
   };
 
-  let ticking = false;
-  const requestPositionUpdate = () => {
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(() => { updatePositions(); ticking = false; });
-  };
-  window.addEventListener('scroll', requestPositionUpdate, { passive: true });
-  window.addEventListener('resize', requestPositionUpdate, { passive: true });
-  reducedMotion.addEventListener?.('change', event => { leaves.forEach(({ element }) => element.classList.toggle('is-floating', !event.matches)); });
+  window.addEventListener('resize', updatePositions, { passive: true });
+  reducedMotion.addEventListener?.('change', event => {
+    leaves.forEach(({ element }) => element.classList.toggle('is-floating', !event.matches));
+  });
+
   updatePositions();
 }
 

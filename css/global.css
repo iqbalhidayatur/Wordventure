@@ -968,7 +968,8 @@ button, input, select, textarea {
 
 /* ─────────────────────────────────────────────
    BOTANICAL LEAF DECORATIONS
-   Per-section, viewport-positioned decorations.
+   Viewport-positioned decorations.
+   Stays fixed while the page scrolls.
    Never changes document layout.
    ───────────────────────────────────────────── */
 .leaf-decoration-layer { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: hidden; z-index: 20; }

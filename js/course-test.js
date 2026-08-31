@@ -126,6 +126,7 @@
         localStorage.setItem('lingosphere.xp', String(xp + 100));
         localStorage.setItem(`lingosphere.courseTestPassed.${course}`, 'true');
         localStorage.setItem(`lingosphere.courseCompleted.${course}`, 'true');
+        try { const key='wordventure.analytics.activity'; const items=JSON.parse(localStorage.getItem(key)||'[]'); items.unshift({type:'exam',course,date:new Date().toISOString()}); localStorage.setItem(key,JSON.stringify(items.slice(0,365))); } catch {}
       }
 
       $('progressBar').style.width = '100%';
@@ -294,6 +295,7 @@
       localStorage.setItem('lingosphere.xp', String(xp + 100));
       localStorage.setItem(`lingosphere.courseTestPassed.${course}`, 'true');
       localStorage.setItem(`lingosphere.courseCompleted.${course}`, 'true');
+        try { const key='wordventure.analytics.activity'; const items=JSON.parse(localStorage.getItem(key)||'[]'); items.unshift({type:'exam',course,date:new Date().toISOString()}); localStorage.setItem(key,JSON.stringify(items.slice(0,365))); } catch {}
     }
 
     $('progressBar').style.width = '100%';
